@@ -2,7 +2,8 @@
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "typeinfo": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
