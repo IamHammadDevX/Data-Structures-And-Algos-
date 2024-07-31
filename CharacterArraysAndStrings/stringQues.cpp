@@ -76,6 +76,7 @@ int main() {
         cout << str;
 
     }
+    cout << endl;
 
 
 
