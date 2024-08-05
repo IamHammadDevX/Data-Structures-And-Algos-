@@ -3,7 +3,8 @@
         "iostream": "cpp",
         "array": "cpp",
         "queue": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
