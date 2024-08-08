@@ -13,7 +13,8 @@ void sort(int arr[], int idx, int size) {
         if (curr < arr[j]) { // found greater value than curr, shift to right
             arr[j + 1] = arr[j];
             j--;
-        } else { // smaller element found
+        }
+        else { // smaller element found
             break;
         }
     }
@@ -25,7 +26,7 @@ void sort(int arr[], int idx, int size) {
 
 int main() {
     // Array to be sorted
-    int arr[] = {10, 1, 7, 6, 14, 9};
+    int arr[] = { 10, 1, 7, 6, 14, 9 };
     // size of array
     int size = 6;
 
