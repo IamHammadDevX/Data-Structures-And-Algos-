@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 using namespace std;
 
 // Linked List Node
@@ -90,7 +91,138 @@ void print(Node*& head) {
 
 
 }
+bool isCircular(Node*& head) {
 
+    // empty list
+    if (head == NULL)
+    {
+        return true;
+    }
+
+    Node* temp = head->nxtNodeAdd;
+
+    while (temp != NULL && temp != head)
+    {
+        temp = temp->nxtNodeAdd;
+    }
+
+
+
+    if (temp == head)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+bool loopDetection(Node*& head) {
+
+    if (head == NULL)
+    {
+        return false;
+    }
+
+    map<Node*, bool> visited;
+
+    Node* temp = head;
+
+    while (temp != NULL)
+    {
+        // visited
+        if (visited[temp] == true)
+        {
+            cout << "Present on elem " << temp->data << endl;
+            return true;
+        }
+
+
+        visited[temp] = true;
+        temp = temp->nxtNodeAdd;
+    }
+
+    return false;
+
+}
+
+
+// Floyd's Cycle detection
+Node* floydCycleDetection(Node*& head) {
+
+    // base call
+    if (head == NULL)
+    {
+        return NULL;
+    }
+
+    // algo
+    Node* slow = head;
+    Node* fast = head;
+
+    while (slow != NULL && fast != NULL)
+    {
+        fast = fast->nxtNodeAdd;
+        if (fast != NULL)
+        {
+            fast = fast->nxtNodeAdd;
+        }
+        slow = slow->nxtNodeAdd;
+
+        if (slow == fast)
+        {
+            cout << "Point of intersection is Present at " << slow->data << endl;
+            return slow;
+        }
+
+
+    }
+    return NULL;
+}
+
+// starting node
+// starting node of loop by floyd's cycle detection
+Node* startingNode(Node*& head) {
+
+    // base call
+    if (head == NULL)
+    {
+        return NULL;
+    }
+
+    Node* pointOfInersection = floydCycleDetection(head);
+    Node* slow = head;
+
+    while (slow != pointOfInersection)
+    {
+        slow = slow->nxtNodeAdd;
+        pointOfInersection = pointOfInersection->nxtNodeAdd;
+    }
+
+    return slow;
+}
+
+// Ending noid before start loop
+// Remove loop by floyd's cycle detection
+void removeLoop(Node*& head) {
+
+    // base call
+    if (head == NULL)
+    {
+        return;
+    }
+
+    Node* startOfLoop = startingNode(head);
+    Node* temp = startOfLoop;
+
+    while (temp->nxtNodeAdd != startOfLoop)
+    {
+        temp = temp->nxtNodeAdd;
+    }
+    temp->nxtNodeAdd = NULL;
+}
 
 int main() {
 
@@ -122,17 +254,61 @@ int main() {
 
     cout << "New Node: ";
     print(head);
-
-
-    cout << "Insertion at Any of Node List!" << endl;
-    cout << "Old Node: ";
-    print(head);
-    insertAtPosition(head, tail, 6, 22);
-    cout << "New Node: ";
-    print(head);
-
     cout << "Head of node list: " << head->data << endl;
     cout << "tail of node list: " << tail->data << endl;
+
+    tail->nxtNodeAdd = head->nxtNodeAdd;
+    // print(head);
+    // cout << "Insertion at Any of Node List!" << endl;
+    // cout << "Old Node: ";
+    // print(head);
+    // insertAtPosition(head, tail, 6, 22);
+    // cout << "New Node: ";
+    // print(head);
+
+    // cout << "Head of node list: " << head->data << endl;
+    // cout << "tail of node list: " << tail->data << endl;
+
+
+
+    // if (isCircular(tail))
+    // {
+    //     cout << "Linked List is circular" << endl;
+    // }
+    // else
+    // {
+    //     cout << "Linked List is not circular" << endl;
+    // }
+
+
+
+
+    // if (loopDetection(tail))
+    // {
+    //     cout << "Loop is present!" << endl;
+    // }
+    // else
+    // {
+    //     cout << "Loop is not present" << endl;
+    // }
+
+
+    // floyd's cycle detection
+    Node* startLoopNode = startingNode(head);
+    cout << "Starting Node is: " << startLoopNode->data << endl;
+
+
+    if (floydCycleDetection(head) != NULL)
+    {
+        cout << "Loop is present!" << endl;
+    }
+    else
+    {
+        cout << "Loop is not present!" << endl;
+    }
+
+    removeLoop(head);
+    print(head);
 
 
     return 0;

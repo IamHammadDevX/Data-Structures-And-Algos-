@@ -133,6 +133,38 @@ void deleteNode(Node*& tail, int value) {
     }
 }
 
+bool isCircular(Node*& head) {
+
+    // empty list
+    if (head == NULL)
+    {
+        return true;
+    }
+
+    Node* temp = head->nxtNodeAdd;
+
+    while (temp != NULL && temp != head)
+    {
+        temp = temp->nxtNodeAdd;
+    }
+
+
+
+    if (temp == head)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+
+
+
+}
+
+
 
 int main()
 {
@@ -160,18 +192,30 @@ int main()
     cout << "New node list: ";
     print(tail);
 
-    deleteNode(tail, 3);
-    cout << "New node list: ";
-    print(tail);
-    deleteNode(tail, 11);
-    cout << "New node list: ";
-    print(tail);
-    deleteNode(tail, 13);
-    cout << "New node list: ";
-    print(tail);
-    deleteNode(tail, 100);
-    cout << "New node list: ";
-    print(tail);
+    // deleteNode(tail, 3);
+    // cout << "New node list: ";
+    // print(tail);
+    // deleteNode(tail, 11);
+    // cout << "New node list: ";
+    // print(tail);
+    // deleteNode(tail, 13);
+    // cout << "New node list: ";
+    // print(tail);
+    // deleteNode(tail, 100);
+    // cout << "New node list: ";
+    // print(tail);
+
+    if (isCircular(tail))
+    {
+        cout << "Linked List is circular" << endl;
+    }
+    else
+    {
+        cout << "Linked List is not circular" << endl;
+    }
+
+
+
 
     return 0;
 }
