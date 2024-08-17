@@ -1,6 +1,18 @@
 #include<iostream>
 using namespace std;
 
+// number of ones
+int numberOfOnes(int n) {
+    int cnt = 0;
+    while (n > 0)
+    {
+        n = n & (n - 1);
+        cnt++;
+    }
+
+    return cnt;
+}
+
 int main() {
     // Subtract the Product and Sum of an integer
     int n;
@@ -35,6 +47,7 @@ int main() {
         n = n >> 1;
     }
     cout << "Number of 1 bits in: " << count << endl;
+    cout << "Number of 1 bits in: " << numberOfOnes(19) << endl;
 
 
 
