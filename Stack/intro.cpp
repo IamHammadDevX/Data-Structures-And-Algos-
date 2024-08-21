@@ -87,8 +87,6 @@ int main()
     st.push(20);
     st.push(30);
     st.push(40);
-    st.push(30);
-    st.push(40);
 
     cout << "Peek elem is " << st.peek() << endl;
     st.pop();
