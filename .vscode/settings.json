@@ -9,7 +9,8 @@
         "string_view": "cpp",
         "regex": "cpp",
         "map": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "ranges": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -15,9 +15,6 @@ bool isSafe(int newX, int newY, int size, vector<vector<int>>& visited, vector<v
         return false;
     }
 
-
-
-
 }
 
 
