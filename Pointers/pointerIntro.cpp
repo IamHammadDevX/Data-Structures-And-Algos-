@@ -37,5 +37,22 @@ int main() {
     cout << "ADDRESS of int pointer After inc: " << hPtr << endl;
 
 
+    int var = 5;
+
+    // Stores the addd of var
+    int* varPtr = &var;
+
+    // print var value
+    cout << "Var: " << var << endl;
+    // print var address
+    cout << "Add of var: " << &var << endl;
+    // cout << "Add of var: " << *var << endl;
+
+    // pointer add
+    cout << "Pointer address: " << varPtr << endl;
+
+    // content of pointer
+    cout << "Content of the pointer: " << *varPtr << endl;
+
     return 0;
 }
