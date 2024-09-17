@@ -29,9 +29,7 @@ int findPosition(int inOrder[], int elem, int size) {
         }
 
     }
-
     return -1;
-
 }
 
 
