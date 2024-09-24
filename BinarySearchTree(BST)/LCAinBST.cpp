@@ -154,7 +154,7 @@ node* lcaInBst(node* root, node* p, node* q) {
     {
         return lcaInBst(root->right, p, q);
     }
-    else if (root->data > p && root->data > q)
+    else if (root->data > p->data && root->data > q->data)
     {
         return lcaInBst(root->left, p, q);
     }
