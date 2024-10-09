@@ -65,15 +65,10 @@ void insertAtPosition(Node*& head, Node*& tail, int position, int data) {
         return;
     }
 
-
-
-
     // Node to insert
     Node* nodeToInsert = new Node(data);
     nodeToInsert->nxtNodeAdd = temp->nxtNodeAdd;
     temp->nxtNodeAdd = nodeToInsert;
-
-
 }
 
 
