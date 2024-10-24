@@ -1,7 +1,7 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
-// make a heap class
 class heap {
 public:
     int arr[100];
@@ -90,73 +90,60 @@ public:
         }
         cout << endl;
     }
+    // Heapify Algo: it put the node to its right position
+    void heapifyAlgo(vector<int>& arr, int size, int idx) {
+        // 1-based indexing
+        int largest = idx;
+        int left = 2 * idx + 1;
+        int right = 2 * idx + 2;
+
+        if (left <= size && arr[largest] < arr[left])
+        {
+            largest = left;
+        }
+        if (right <= size && arr[largest] < arr[right])
+        {
+            largest = right;
+        }
+
+        if (largest != idx)
+        {
+            swap(arr[largest], arr[idx]);
+            // recursive call for right and vice versa other nodes
+            heapifyAlgo(arr, size, largest);
+        }
+    }
+
+    // mergeTwo MaxHeaps
+    vector<int> mergeTwoHeaps(vector<int>& a, vector<int>& b, int n, int m) {
+
+        // step1: merge both arrays into one
+        vector<int> c;
+        for (auto i : a)
+        {
+            c.push_back(i);
+        }
+        for (auto i : b)
+            c.push_back(i);
+
+        // build heap from merged array algo
+        int size = c.size();
+        for (int i = size / 2 - 1; i >= 0; i--)
+        {
+            heapifyAlgo(c, size, i);
+        }
+
+        return c;
+    }
 
 };
 
-// Heapify Algo: it put the node to its right position
-void heapifyAlgo(int arr[], int size, int idx) {
 
-    int largest = idx;
-    int left = 2 * idx;
-    int right = 2 * idx + 1;
 
-    if (left <= size && arr[largest] < arr[left])
-    {
-        largest = left;
-    }
-    if (right <= size && arr[largest] < arr[right])
-    {
-        largest = right;
-    }
-
-    if (largest != idx)
-    {
-        swap(arr[largest], arr[idx]);
-        // recursive call for right and vice versa other nodes
-        heapifyAlgo(arr, size, largest);
-    }
-}
 
 int main()
 {
 
-    heap maxHeap;
-    cout << endl << " ^_^ Insertion into heap ^_^ " << endl << endl;
-    maxHeap.insert(65);
-    maxHeap.insert(14);
-    maxHeap.insert(89);
-    maxHeap.insert(85);
-    maxHeap.insert(53);
-    maxHeap.insert(67);
-    cout << "Printing the max Heap: ";
-    maxHeap.print();
-    cout << endl << " ^_^ Deleting from heap ^_^ " << endl << endl;
-    maxHeap.deleteFromHeap();
-    cout << "Printing the max Heap After Deletion: ";
-    maxHeap.print();
-
-    cout << endl << " (-_-) Heapify Algorithm (-_-) " << endl << endl;
-    int arr[6] = { -1, 54, 53, 55, 52, 50 };
-    int n = 5;
-    cout << "Printing the array Before Heapify: ";
-    for (int i = 0; i < n + 1; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-    // no need to process the leaf node bcz they are in itself a heap
-    // thats why we start from n/2
-    for (int i = n / 2; i > 0; i--)
-    {
-        heapifyAlgo(arr, n, i);
-    }
-    // print
-    cout << "Printing the array After Heapify: ";
-    for (int i = 1; i <= n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 
 
 
