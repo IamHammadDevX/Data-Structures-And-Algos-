@@ -25,7 +25,7 @@ int main()
     // 3rd way
     m["RunMachine"] = 18;
     // what will happen?????
-    m["RunMachine"] = 100;
+    m["RunMachine"] = 100; //modify
 
     // Searching
     cout << m["Virat"] << endl;
@@ -47,7 +47,7 @@ int main()
 
     cout << "Size: " << m.size() << endl;
     // Erase
-    cout << m.erase("Gabbad") << endl;
+    cout << m.erase("Gabba") << endl;
     cout << "Size: " << m.size() << endl;
 
     // iterators
