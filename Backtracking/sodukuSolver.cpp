@@ -76,7 +76,39 @@ void solveSudoKu(vector<vector<int> >& sudoku)
 int main()
 {
 
+    // Initialize a 9x9 Sudoku board
+    vector<vector<int>> sudoku = {
+        {5, 3, 0, 0, 7, 0, 0, 0, 0},
+        {6, 0, 0, 1, 9, 5, 0, 0, 0},
+        {0, 9, 8, 0, 0, 0, 0, 6, 0},
+        {8, 0, 0, 0, 6, 0, 0, 0, 3},
+        {4, 0, 0, 8, 0, 3, 0, 0, 1},
+        {7, 0, 0, 0, 2, 0, 0, 0, 6},
+        {0, 6, 0, 0, 0, 0, 2, 8, 0},
+        {0, 0, 0, 4, 1, 9, 0, 0, 5},
+        {0, 0, 0, 0, 8, 0, 0, 7, 9}
+    };
 
+    cout << "Original Sudoku board:\n";
+    for (const auto& row : sudoku) {
+        for (int num : row) {
+            cout << num << " ";
+        }
+        cout << "\n";
+    }
+
+    if (solve(sudoku)) {
+        cout << "\nSolved Sudoku board:\n";
+        for (const auto& row : sudoku) {
+            for (int num : row) {
+                cout << num << " ";
+            }
+            cout << "\n";
+        }
+    }
+    else {
+        cout << "\nNo solution exists for the given Sudoku board.\n";
+    }
 
 
     return 0;
