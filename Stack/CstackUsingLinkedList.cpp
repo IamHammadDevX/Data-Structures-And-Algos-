@@ -168,7 +168,7 @@ int main() {
             cout << "Top element is: " << stack.peek() << endl;
             break;
         case 4:
-            stack.print();  // Correct function call for displaying the stack
+            stack.print();
             break;
         case 5:
             stack.clear();
